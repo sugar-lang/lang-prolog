@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import org.spoofax.interpreter.terms.IStrategoTerm;
 import org.strategoxt.lang.Context;
@@ -90,9 +91,12 @@ public class PrologProcessor extends AbstractBaseProcessor implements Serializab
   }
 
   @Override
-  public void init(RelativePath sourceFile, Environment environment) {
+  public void init(Set<RelativePath> sourceFiles, Environment environment) {
+    if (sourceFiles.size() != 1)
+      throw new IllegalArgumentException("Fomega can only compile one source file at a time.");
+
     this.environment = environment;
-    this.sourceFile = sourceFile;
+    this.sourceFile = sourceFiles.iterator().next();
     prologOutFile = environment.createOutPath(FileCommands.dropExtension(sourceFile.getRelativePath()) + "." + PrologLanguage.getInstance().getBinaryFileExtension());
   }
 
