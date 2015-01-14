@@ -4,6 +4,7 @@ import static org.sugarj.common.ATermCommands.getApplicationSubterm;
 import static org.sugarj.common.ATermCommands.isApplication;
 import static org.sugarj.common.Log.log;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Collections;
@@ -148,7 +149,7 @@ public class PrologProcessor extends AbstractBaseProcessor implements Serializab
   }
 
   private String getRelativeModulePath(String moduleName) {
-    return moduleName.replace("/", Environment.sep);
+    return moduleName.replace("/", File.separator);
   }
   
   private String getImportedModuleString(IStrategoTerm moduleDecl) {
