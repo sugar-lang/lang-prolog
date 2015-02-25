@@ -11,6 +11,8 @@ import org.sugarj.common.path.Path;
 
 public class PrologLanguage extends AbstractBaseLanguage {
 
+  private static final long serialVersionUID = -7674674996587006974L;
+
   private PrologLanguage() { }
   
   private static PrologLanguage instance = new PrologLanguage();
